@@ -1,13 +1,15 @@
 package br.com.ifsp.maladireta.controller;
-import jakarta.servlet.*;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.*;
 import java.io.IOException;
 import java.util.List;
 
 import br.com.ifsp.maladireta.dao.AniversarianteDAO;
 import br.com.ifsp.maladireta.model.Aniversariante;
 import br.com.ifsp.maladireta.service.EmailService;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet("/email_aniversariantes")
 public class AniversarioServlet extends HttpServlet 
@@ -20,11 +22,11 @@ public class AniversarioServlet extends HttpServlet
             List<Aniversariante> aniversariantes = dao.getAniversariantesDoDia();
             resp.getWriter().println("Aniversariantes de hoje:");
             
-            EmailService emailService = new EmailService();
+            //EmailService emailService = new EmailService();
             
             for (Aniversariante aniversariante : aniversariantes) 
             {
-                emailService.enviarEmailAniversario(aniversariante);
+                //emailService.enviarEmailAniversario(aniversariante);
             	resp.getWriter().println(aniversariante);
             }
 
